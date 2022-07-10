@@ -16,7 +16,7 @@ Teste de seleção para vaga de Java
 
 <!--ts-->
 # 🌐 Como acessar
-* ## Após inicializar o Spring boot:
+## Após inicializar o Spring boot:
   * [Clique aqui](http://localhost:8080/h2-console/login.jsp?jsessionid=b5181ad0d167adf0e9050d58dab9d426) para acessar a database do H2
     * (JDBC URL: jdbc:h2:mem:testdb)
     * ```http://localhost:8080/h2-console/login.jsp?jsessionid=b5181ad0d167adf0e9050d58dab9d426```
@@ -26,7 +26,7 @@ Teste de seleção para vaga de Java
 
 # 💠 [Pré-requisitos](https://github.com/cd2tec/JavaTest)
 
-- ### Regras de negócio:
+### Regras de negócio:
   - [x] CEPs com DDDs iguais tem 50% de desconto no valor do frete e entrega prevista de 1 dia
   - [x] CEPs de estados iguais tem 75% de desconto no valor do frete e entrega prevista de 3 dias
   - [x] CEPs de estados diferentes não deve ser aplicado o desconto no valor do frete e entrega prevista de 10 dias
