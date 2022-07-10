@@ -38,5 +38,10 @@ public class FreteController {
     }
 
     @GetMapping
+    @Operation(summary = "Rota de Fretes", description = "Retorna todos os fretes")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = FreteResponse.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server erro", content = @Content(schema = @Schema(implementation = BusinessException.class)))
+    })
     public List<FreteResponse> getFretes() { return service.getFretesList(); }
 }
