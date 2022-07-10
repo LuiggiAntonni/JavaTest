@@ -5,6 +5,7 @@ import com.SigaBem.demo.client.model.ApiCepResponse;
 import com.SigaBem.demo.exception.BusinessException;
 import com.SigaBem.demo.model.dto.FreteRequest;
 import com.SigaBem.demo.model.dto.FreteResponse;
+import com.SigaBem.demo.model.entity.FreteEntity;
 import com.SigaBem.demo.model.mapper.FreteMapper;
 import com.SigaBem.demo.repository.FreteRepository;
 import com.SigaBem.demo.service.FreteService;
@@ -14,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -46,6 +49,11 @@ public class FreteServiceImpl implements FreteService {
             log.error("Erro ao calcular frete: ", exception.getMessage());
             throw new BusinessException("Erro interno");
         }
+    }
+
+    @Override
+    public List<FreteResponse> getFretesList() {
+        return FreteMapper.ToFreteListResponse(repository.findAll());
     }
 
     /**

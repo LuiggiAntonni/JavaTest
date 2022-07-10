@@ -2,9 +2,10 @@ package com.SigaBem.demo.service;
 
 import com.SigaBem.demo.model.dto.FreteRequest;
 import com.SigaBem.demo.model.dto.FreteResponse;
-import org.springframework.stereotype.Service;
+import com.SigaBem.demo.model.entity.FreteEntity;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface FreteService {
     /**
@@ -13,6 +14,13 @@ public interface FreteService {
      * @return freteResponse
      */
     FreteResponse calcFrete(FreteRequest req);
+
+    /**
+     * Retorna todos os fretes armazenados
+     *
+     * @return lista de fretes
+     */
+    List<FreteResponse> getFretesList();
 
     /**
      * Calculadora de desconto

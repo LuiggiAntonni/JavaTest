@@ -1,8 +1,6 @@
 package com.SigaBem.demo.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -14,6 +12,8 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@ToString
 @Table(name = "tblFrete")
 @Entity
 public class FreteEntity {
