@@ -41,6 +41,16 @@ public class FreteServiceImpl implements FreteService {
         }
     }
 
+    /**
+     * <p>- CEPs com DDDs iguais tem 50% de desconto no valor do frete e entrega prevista de 1 dia</p>
+     * <p>- CEPs de estados iguais tem 75% de desconto no valor do frete e entrega prevista de 3 dias</p>
+     * <p>- CEPs de estados diferentes não deve ser aplicado o desconto no valor do frete e entrega prevista de 10 dias</p>
+     * <p>- O valor do frete é cobrado pelo peso da encomenda, o valor para cada KG é R$1,00</p>
+     * @param freteResponse
+     * @param peso
+     * @param apiReqCepOrigem
+     * @param apiReqCepDestino
+     */
     private void descontoDoFrete(FreteResponse freteResponse, Double peso, ApiCepResponse apiReqCepOrigem, ApiCepResponse apiReqCepDestino) {
         var valorPorKg = new BigDecimal(1);
         var desconto = 0.0;

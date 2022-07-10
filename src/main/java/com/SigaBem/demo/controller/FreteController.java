@@ -24,6 +24,7 @@ import javax.validation.Valid;
 public class FreteController {
     @Autowired
     private FreteService service;
+
     @Operation(summary = "Rota de cálculo")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = FreteResponse.class))),
