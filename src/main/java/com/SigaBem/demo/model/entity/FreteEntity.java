@@ -3,11 +3,13 @@ package com.SigaBem.demo.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Builder
 @NoArgsConstructor
@@ -38,7 +40,7 @@ public class FreteEntity {
     private Integer dataPrevistaEntrega;
 
     @Column(name = "data_Consulta")
-    @CreatedDate
-    private LocalDateTime dataConsulta;
+    @CreationTimestamp
+    private Date dataConsulta;
 
 }
