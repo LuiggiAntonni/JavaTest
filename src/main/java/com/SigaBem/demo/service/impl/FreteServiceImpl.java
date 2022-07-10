@@ -50,10 +50,15 @@ public class FreteServiceImpl implements FreteService {
             throw new BusinessException("Erro interno");
         }
     }
-
+    @SneakyThrows
     @Override
     public List<FreteResponse> getFretesList() {
-        return FreteMapper.ToFreteListResponse(repository.findAll());
+        try {
+            return FreteMapper.ToFreteListResponse(repository.findAll());
+        }
+        catch (Exception exception){
+            throw new BusinessException("Erro interno");
+        }
     }
 
     /**
