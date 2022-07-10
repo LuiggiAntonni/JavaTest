@@ -2,9 +2,11 @@ package com.SigaBem.demo.service.impl;
 
 import com.SigaBem.demo.client.ApiCepClient;
 import com.SigaBem.demo.client.model.ApiCepResponse;
+import com.SigaBem.demo.exception.BusinessException;
 import com.SigaBem.demo.model.dto.FreteRequest;
 import com.SigaBem.demo.model.dto.FreteResponse;
 import com.SigaBem.demo.service.FreteService;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,19 +19,26 @@ public class FreteServiceImpl implements FreteService {
     @Autowired
     private ApiCepClient client;
 
+    @SneakyThrows
     @Override
     public FreteResponse calcFrete(FreteRequest req) {
-        var ApiReqCepOrigem = client.consultaCep(req.getCepOrigem());
-        var ApiReqCepDestino = client.consultaCep(req.getCepDestino());
+        try {
+            var ApiReqCepOrigem = client.consultaCep(req.getCepOrigem());
+            var ApiReqCepDestino = client.consultaCep(req.getCepDestino());
 
-        FreteResponse freteResponse = FreteResponse.builder()
-                .cepOrigem(req.getCepOrigem())
-                .cepDestino(req.getCepDestino())
-                .build();
+            FreteResponse freteResponse = FreteResponse.builder()
+                    .cepOrigem(req.getCepOrigem())
+                    .cepDestino(req.getCepDestino())
+                    .build();
 
-        descontoDoFrete(freteResponse, req.getPeso(), ApiReqCepOrigem, ApiReqCepDestino);
+            descontoDoFrete(freteResponse, req.getPeso(), ApiReqCepOrigem, ApiReqCepDestino);
 
-        return freteResponse;
+            return freteResponse;
+        }
+        catch (Exception exception) {
+            log.error("Erro ao calcular frete: ", exception.getMessage());
+            throw new BusinessException("Erro interno");
+        }
     }
 
     private void descontoDoFrete(FreteResponse freteResponse, Double peso, ApiCepResponse apiReqCepOrigem, ApiCepResponse apiReqCepDestino) {
