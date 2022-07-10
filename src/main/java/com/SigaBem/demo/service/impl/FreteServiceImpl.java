@@ -5,6 +5,7 @@ import com.SigaBem.demo.client.model.ApiCepResponse;
 import com.SigaBem.demo.exception.BusinessException;
 import com.SigaBem.demo.model.dto.FreteRequest;
 import com.SigaBem.demo.model.dto.FreteResponse;
+import com.SigaBem.demo.repository.FreteRepository;
 import com.SigaBem.demo.service.FreteService;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,9 @@ import java.math.BigDecimal;
 public class FreteServiceImpl implements FreteService {
     @Autowired
     private ApiCepClient client;
+
+    @Autowired
+    private FreteRepository repository;
 
     @SneakyThrows
     @Override
