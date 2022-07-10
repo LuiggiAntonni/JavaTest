@@ -5,6 +5,7 @@ import com.SigaBem.demo.client.model.ApiCepResponse;
 import com.SigaBem.demo.exception.BusinessException;
 import com.SigaBem.demo.model.dto.FreteRequest;
 import com.SigaBem.demo.model.dto.FreteResponse;
+import com.SigaBem.demo.model.mapper.FreteMapper;
 import com.SigaBem.demo.repository.FreteRepository;
 import com.SigaBem.demo.service.FreteService;
 import lombok.SneakyThrows;
@@ -36,6 +37,8 @@ public class FreteServiceImpl implements FreteService {
                     .build();
 
             descontoDoFrete(freteResponse, req.getPeso(), ApiReqCepOrigem, ApiReqCepDestino);
+
+            repository.save(FreteMapper.toFreteEntity(req, freteResponse));
 
             return freteResponse;
         }
